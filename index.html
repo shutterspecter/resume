@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - // RESUME v2.0 //</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://unpkg.com/lucide-static@0.378.0/font/Lucide.ttf) format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.25rem;
+        line-height: 1;
+        display: inline-block;
+      }
+
+      /* Modern Cyberpunk Custom Styles */
+      :root {
+        /* Define color palette (keeping core neons, adding more darks) */
+        --bg-color: #0a0118; /* Slightly deeper base */
+        --bg-secondary-color: #1a0a38; /* Card/Nav Background */
+        --bg-tertiary-color: #2c105c; /* Button Background */
+        --text-color: #e0e0e0; /* Light Gray/Off-white */
+        --text-secondary-color: #a0a0c0; /* Muted Purple/Gray */
+        --primary-neon: #00f0ff; /* Cyan */
+        --primary-neon-darker: #00b8cc;
+        --secondary-neon: #ff00ff; /* Magenta */
+        --secondary-neon-darker: #cc00cc;
+        --accent-neon: #39ff14; /* Lime Green */
+        --accent-neon-darker: #2aff00;
+        --border-color: rgba(0, 240, 255, 0.5); /* Subtler neon border */
+        --card-bg: var(--bg-secondary-color); /* Solid dark purple */
+        --heading-font: 'Audiowide', cursive;
+        --body-font: 'Inter', sans-serif; /* Changed to Inter */
+      }
+
+      /* Subtle Glow Animation (Used more sparingly) */
+      @keyframes subtleGlow {
+        0%, 100% { text-shadow: 0 0 4px var(--primary-neon); }
+        50% { text-shadow: 0 0 8px var(--primary-neon); }
+      }
+       @keyframes subtleGlowMagenta {
+        0%, 100% { text-shadow: 0 0 4px var(--secondary-neon); }
+        50% { text-shadow: 0 0 8px var(--secondary-neon); }
+      }
+      @keyframes borderGlowHover { /* Glow effect primarily on hover */
+        from { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3), inset 0 0 3px rgba(0, 240, 255, 0.2); }
+        to { box-shadow: 0 0 12px rgba(0, 240, 255, 0.6), inset 0 0 6px rgba(0, 240, 255, 0.4); }
+      }
+
+      body {
+        font-family: var(--body-font);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-weight: 300; /* Lighter base weight for Inter */
+        /* Optional: Even subtler grid or remove entirely */
+        background-image: linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px; /* Larger grid */
+      }
+
+      html { scroll-behavior: smooth; }
+
+      /* Headings */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--heading-font);
+        color: var(--primary-neon);
+        /* Subtler text shadow */
+        text-shadow: 0 0 5px rgba(0, 240, 255, 0.7);
+        font-weight: normal;
+        letter-spacing: 1px;
+      }
+      h1 { font-size: 2.5rem; line-height: 1.1; text-transform: uppercase;}
+      h2 { font-size: 1.8rem; line-height: 1.2; margin-bottom: 2.5rem; text-transform: uppercase;} /* Increased margin */
+      h3 { font-size: 1.3rem; line-height: 1.3; color: var(--secondary-neon);
+           text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+           margin-bottom: 0.75rem;
+         }
+      @media (min-width: 768px) {
+          h1 { font-size: 3rem; }
+          h2 { font-size: 2.2rem; }
+          h3 { font-size: 1.5rem; }
+      }
+
+      /* Section Animation */
+      section {
+        opacity: 0;
+        transform: translateY(20px); /* Slightly less pronounced */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        padding-top: 4rem;
+        margin-bottom: 5rem; /* More space between sections */
+      }
+      section:target { scroll-margin-top: 5rem; }
+      section.visible { opacity: 1; transform: translateY(0); }
+
+      /* Custom Card Style - Modernized */
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 6px; /* Slightly rounded corners: rounded-md */
+        padding: 1.75rem; /* p-7 - slightly more padding */
+        border: 1px solid var(--border-color); /* Subtler border color */
+        /* Minimal static shadow, glow on hover */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        /* Removed backdrop-filter */
+      }
+      .card:hover {
+          transform: translateY(-4px);
+          border-color: var(--primary-neon); /* Brighter border on hover */
+          /* Apply hover glow animation */
+          animation: borderGlowHover 0.5s ease forwards;
+      }
+
+      /* Custom Button Style - Modernized */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.8rem 1.8rem; /* Slightly larger padding */
+        /* Solid dark background */
+        background-color: var(--bg-tertiary-color);
+        color: var(--primary-neon);
+        border: 1px solid transparent; /* Start with transparent border */
+        border-radius: 4px; /* rounded-sm */
+        font-weight: 400; /* Regular weight for Inter */
+        font-family: var(--body-font);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      }
+      .btn:hover {
+        background-color: var(--bg-secondary-color); /* Slightly lighter on hover */
+        color: var(--primary-neon);
+        border-color: var(--primary-neon); /* Add neon border on hover */
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5); /* Glow + stronger shadow */
+        transform: translateY(-2px);
+      }
+      .btn .lucide {
+        margin-right: 0.75rem; /* Increased spacing */
+        font-size: 1.1rem;
+        /* No default filter, color matches text */
+        transition: transform 0.3s ease;
+      }
+       .btn:hover .lucide {
+           transform: scale(1.1); /* Subtle icon scale on hover */
+       }
+
+      /* Secondary Button Style (Magenta) - Modernized */
+      .btn-secondary {
+         color: var(--secondary-neon);
+         /* Keep solid background */
+      }
+      .btn-secondary:hover {
+         color: var(--secondary-neon);
+         border-color: var(--secondary-neon);
+         box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Link Styles - Modernized */
+      a {
+        color: var(--secondary-neon);
+        text-decoration: none;
+        font-weight: 400; /* Regular weight for links */
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
+      a:hover {
+        color: var(--primary-neon);
+        /* Very subtle glow on hover */
+        text-shadow: 0 0 6px rgba(0, 240, 255, 0.7);
+      }
+      /* Nav/Footer links */
+      nav a, footer a {
+          color: var(--text-secondary-color);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 5px 0;
+          position: relative;
+          font-weight: 400; /* Regular weight */
+      }
+      nav a::after { /* Underline effect - keep */
+          content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; /* Thinner line */
+          background-color: var(--primary-neon); transition: width 0.3s ease;
+      }
+      nav a:hover, nav a.active {
+          color: var(--primary-neon);
+          text-shadow: 0 0 4px rgba(0, 240, 255, 0.6); /* Subtle nav hover glow */
+      }
+      nav a:hover::after, nav a.active::after { width: 100%; }
+
+      /* Icon Link Styling (Social Icons) - Modernized */
+      .icon-link .lucide {
+        color: var(--text-secondary-color);
+        transition: color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+        font-size: 1.6rem; /* Slightly smaller */
+      }
+      .icon-link:hover .lucide {
+        color: var(--primary-neon);
+        /* Subtle drop shadow instead of strong filter */
+        filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.7));
+        transform: scale(1.1);
+      }
+
+      /* Specific Element Adjustments */
+      #hero img {
+          border: 2px solid var(--border-color); /* Thinner border */
+          box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); /* Subtler shadow */
+          filter: saturate(1.1); /* Less saturation */
+      }
+      #hero p:first-of-type { /* Job Title */
+          color: var(--accent-neon);
+          font-size: 1.4rem; /* Slightly smaller */
+          text-shadow: 0 0 6px rgba(57, 255, 20, 0.7); /* Subtler glow */
+          letter-spacing: 1px;
+          margin-bottom: 1rem;
+          font-weight: 400; /* Use Inter regular */
+      }
+      #hero .text-lg { /* Hero description */
+          color: var(--text-secondary-color);
+          font-size: 1.05rem; /* Adjusted size */
+          line-height: 1.7; /* More line spacing */
+          font-weight: 300; /* Lighter Inter */
+      }
+
+      /* Experience/Education Titles */
+      .job-title {
+          font-family: var(--body-font); /* Use Inter */
+          font-size: 1.15rem;
+          font-weight: 600; /* Semibold Inter */
+          color: var(--text-color);
+          text-transform: none; /* No uppercase */
+          letter-spacing: 0px;
+          margin-bottom: 0.2rem;
+      }
+      .company-name {
+          color: var(--primary-neon);
+          font-size: 1rem;
+          font-weight: 400; /* Regular Inter */
+          /* Removed constant glow animation */
+          transition: text-shadow 0.3s ease;
+      }
+       .company-name:hover {
+           /* Add glow only on hover */
+           text-shadow: 0 0 6px rgba(0, 240, 255, 0.7);
+       }
+
+      /* Skills */
+      .skill-category {
+          font-family: var(--heading-font);
+          font-size: 1.1rem;
+          color: var(--accent-neon);
+          text-shadow: 0 0 4px rgba(57, 255, 20, 0.6); /* Subtler glow */
+          margin-bottom: 1rem; /* More space */
+      }
+      #skills ul li {
+          padding: 3px 0; /* More vertical space */
+          transition: color 0.3s, text-shadow 0.3s;
+          font-weight: 300; /* Lighter Inter */
+      }
+       #skills ul li:hover {
+           color: var(--primary-neon);
+           text-shadow: 0 0 5px rgba(0, 240, 255, 0.7);
+       }
+
+
+      /* Project Tags - Modernized */
+      .project-tags span {
+          border-radius: 4px; /* rounded-sm */
+          font-size: 0.7rem; /* Slightly smaller */
+          padding: 0.25rem 0.6rem;
+          font-weight: 400; /* Regular Inter */
+          text-transform: uppercase;
+          border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+          margin-right: 0.5rem;
+          margin-bottom: 0.5rem;
+          display: inline-block;
+          transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+          /* Use text color for tags */
+          color: var(--text-secondary-color);
+          background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
+      }
+      /* Hover effect for tags - use neon color */
+      .project-tags span.tag-react:hover { color: #61DAFB; border-color: rgba(97, 218, 251, 0.5); background-color: rgba(97, 218, 251, 0.1); }
+      .project-tags span.tag-node:hover { color: #8CC84B; border-color: rgba(140, 200, 75, 0.5); background-color: rgba(140, 200, 75, 0.1); }
+      .project-tags span.tag-tailwind:hover { color: #38BDF8; border-color: rgba(56, 189, 248, 0.5); background-color: rgba(56, 189, 248, 0.1); }
+      .project-tags span.tag-python:hover { color: #FFD43B; border-color: rgba(255, 212, 59, 0.5); background-color: rgba(255, 212, 59, 0.1); }
+      .project-tags span.tag-flask:hover { color: #ffffff; border-color: rgba(255, 255, 255, 0.5); background-color: rgba(255, 255, 255, 0.1); }
+      .project-tags span.tag-sql:hover { color: #f0ad4e; border-color: rgba(240, 173, 78, 0.5); background-color: rgba(240, 173, 78, 0.1); }
+      .project-tags span.tag-figma:hover { color: #F24E1E; border-color: rgba(242, 78, 30, 0.5); background-color: rgba(242, 78, 30, 0.1); }
+      .project-tags span.tag-uiux:hover { color: var(--secondary-neon); border-color: rgba(255, 0, 255, 0.5); background-color: rgba(255, 0, 255, 0.1); }
+
+
+      /* Project Links - Modernized */
+      #projects .card a {
+          color: var(--primary-neon);
+          font-weight: 600; /* Semibold Inter for links */
+          /* Removed constant glow animation */
+          transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
+       #projects .card a:hover {
+           color: var(--accent-neon);
+           text-shadow: 0 0 6px rgba(57, 255, 20, 0.7); /* Lime glow on hover */
+       }
+       #projects .card a .lucide {
+           /* No default filter */
+           transition: filter 0.3s ease;
+       }
+       #projects .card a:hover .lucide {
+           filter: drop-shadow(0 0 4px var(--accent-neon));
+       }
+
+
+      /* Footer style */
+      footer {
+          background-color: var(--bg-secondary-color);
+          border-top: 1px solid var(--border-color); /* Subtler border */
+          color: var(--text-secondary-color);
+          padding: 1.5rem 0;
+          box-shadow: 0 -3px 10px rgba(0, 240, 255, 0.05); /* Very subtle top shadow */
+          font-weight: 300; /* Light Inter */
+      }
+
+      /* Navbar style - Modernized */
+       nav {
+          background-color: rgba(10, 1, 24, 0.8); /* Slightly more opaque */
+          backdrop-filter: blur(12px); /* Stronger blur */
+          border-bottom: 1px solid var(--border-color);
+          box-shadow: 0 3px 10px rgba(0, 240, 255, 0.1); /* Subtler shadow */
+       }
+       nav .font-bold { /* Logo/Name in Nav */
+           font-family: var(--heading-font);
+           color: var(--primary-neon);
+           font-size: 1.4rem; /* Slightly smaller logo */
+           text-shadow: 0 0 6px rgba(0, 240, 255, 0.8);
+       }
+       #mobile-menu {
+           background-color: rgba(10, 1, 24, 0.95); /* Darker mobile menu */
+           border-top-color: var(--border-color);
+       }
+       #mobile-menu a:hover {
+           background-color: rgba(0, 240, 255, 0.05); /* Very subtle hover bg */
+       }
+
+
+       /* List bullets */
+       ul li::marker {
+           color: var(--primary-neon);
+           /* Removed text shadow from marker */
+       }
+       ul { padding-left: 1.25rem; /* Adjust indentation */ }
+       li {
+           margin-bottom: 0.4rem; /* Slightly less space */
+           color: var(--text-secondary-color);
+           font-weight: 300; /* Light Inter */
+           line-height: 1.6; /* Ensure good line spacing */
+       }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-bold">Your Name</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#education">Education</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="md:hidden">
+                     <button id="mobile-menu-button" class="text-[--primary-neon] hover:text-[--secondary-neon] focus:outline-none p-2"> <span class="lucide text-2xl">&#xe98a;</span> </button>
+                 </div>
+            </div>
+        </div>
+         <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">Experience</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">Skills</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">Education</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base text-[--text-secondary-color] hover:text-[--primary-neon] hover:bg-[rgba(0,240,255,0.05)]">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20"> <section id="hero" class="text-center flex flex-col items-center">
+            <img src="https://placehold.co/160x160/0a0118/00f0ff?text=USER" alt="Your Name" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8"> <h1 class="mb-3">Your Name</h1>
+            <p class="font-medium mb-5">Your Job Title / Profession</p> <p class="max-w-3xl mx-auto text-lg mb-10 leading-relaxed"> A brief, engaging tagline about yourself. Highlighting key expertise & career trajectory in the modern digital landscape.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-5"> <a href="#contact" class="btn">
+                    <span class="lucide">&#xea0c;</span> Contact
+                </a>
+                <a href="your-resume.pdf" download class="btn btn-secondary">
+                    <span class="lucide">&#xe953;</span> Download CV
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="scroll-mt-20">
+            <h2 class="text-center">About // Profile</h2>
+            <div class="card max-w-4xl mx-auto"> <p class="text-lg leading-relaxed">
+                    Write a more detailed description about yourself here. Focus on your passion, key skills, experience highlights, and career aspirations. Mention what makes you unique and what value you bring. Keep it professional yet personable. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                </p>
+            </div>
+        </section>
+
+        <section id="experience" class="scroll-mt-20">
+            <h2 class="text-center">Experience // Log</h2>
+            <div class="space-y-10 max-w-4xl mx-auto"> <div class="card flex flex-col md:flex-row gap-x-8 gap-y-4"> <div class="flex-shrink-0 md:w-1/4">
+                        <h3 class="job-title">Job Title</h3>
+                        <p class="company-name">Company Name</p>
+                        <p class="text-sm text-[--text-secondary-color] mt-1">City, Sector</p>
+                        <p class="text-sm text-[--text-secondary-color]">Start Date - End Date (or Present)</p>
+                    </div>
+                    <div class="flex-grow md:w-3/4">
+                        <ul class="list-disc list-outside space-y-2"> <li>Describe key responsibilities & achievements using action verbs.</li>
+                            <li>Quantify accomplishments where possible (e.g., +15% efficiency, -10% costs).</li>
+                            <li>Detail specific project involvement and relevant technologies used.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-x-8 gap-y-4">
+                     <div class="flex-shrink-0 md:w-1/4">
+                        <h3 class="job-title">Previous Job Title</h3>
+                        <p class="company-name">Previous Company Name</p>
+                        <p class="text-sm text-[--text-secondary-color] mt-1">City, Sector</p>
+                        <p class="text-sm text-[--text-secondary-color]">Start Date - End Date</p>
+                    </div>
+                    <div class="flex-grow md:w-3/4">
+                        <ul class="list-disc list-outside space-y-2">
+                            <li>Detail responsibilities and accomplishments in this prior role.</li>
+                            <li>Highlight relevant skills and experiences applicable to target positions.</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="skills" class="scroll-mt-20">
+            <h2 class="text-center">Skills // Matrix</h2>
+            <div class="card max-w-4xl mx-auto">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-10 text-center"> <div>
+                        <h4 class="skill-category">// Programming</h4>
+                        <ul class="space-y-1 text-[--text-secondary-color]">
+                            <li>JavaScript</li>
+                            <li>Python</li>
+                            <li>HTML & CSS</li>
+                            <li>React / Vue</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="skill-category">// Tools</h4>
+                        <ul class="space-y-1 text-[--text-secondary-color]">
+                            <li>Git & GitHub</li>
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
+                            <li>Figma</li>
+                            <li>Jira / Asana</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="skill-category">// Languages</h4>
+                        <ul class="space-y-1 text-[--text-secondary-color]">
+                            <li>English [Native]</li>
+                            <li>Spanish [Fluent]</li>
+                            <li>French [Basic]</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 class="skill-category">// Core Skills</h4>
+                        <ul class="space-y-1 text-[--text-secondary-color]">
+                            <li>Communication</li>
+                            <li>Team Collaboration</li>
+                            <li>Problem-Solving</li>
+                            <li>Agile Methods</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="scroll-mt-20">
+             <h2 class="text-center">Education // Log</h2>
+             <div class="space-y-8 max-w-4xl mx-auto"> <div class="card">
+                    <h3 class="job-title">Degree Name (e.g., M.Sc. Computer Science)</h3>
+                    <p class="company-name">University Name / Institute</p>
+                    <p class="text-sm text-[--text-secondary-color] mt-1">City, Sector</p>
+                    <p class="text-sm text-[--text-secondary-color]">Graduation Year (or Expected)</p>
+                    <p class="mt-3 text-[--text-secondary-color]">Optional: Relevant coursework, thesis, honors, GPA.</p> </div>
+                 <div class="card">
+                    <h3 class="job-title">Degree Name (e.g., B.Sc. Software Engineering)</h3>
+                    <p class="company-name">University Name / Institute</p>
+                    <p class="text-sm text-[--text-secondary-color] mt-1">City, Sector</p>
+                    <p class="text-sm text-[--text-secondary-color]">Graduation Year</p>
+                </div>
+             </div>
+        </section>
+
+        <section id="projects" class="scroll-mt-20">
+            <h2 class="text-center">Projects // Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card flex flex-col h-full"> <img src="https://placehold.co/600x400/0a0118/00f0ff?text=Project_A" alt="Project 1 Screenshot" class="mb-5 aspect-video object-cover rounded-sm border border-[--border-color]"> <h3 class="job-title mb-2">Project Title 1</h3>
+                    <p class="text-[--text-secondary-color] text-sm mb-4 flex-grow">Brief description of the project, its purpose, and key outcomes. Highlighting modern tech stack.</p> <div class="mb-5 project-tags"> <span class="tag-react">React</span>
+                        <span class="tag-node">Node.js</span>
+                        <span class="tag-tailwind">Tailwind</span>
+                    </div>
+                    <div class="mt-auto flex space-x-5"> <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                            <span class="lucide mr-1.5">&#xe9cb;</span> Live Demo
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                           <span class="lucide mr-1.5">&#xe997;</span> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="card flex flex-col h-full">
+                     <img src="https://placehold.co/600x400/0a0118/ff00ff?text=Project_B" alt="Project 2 Screenshot" class="mb-5 aspect-video object-cover rounded-sm border border-[--border-color]">
+                    <h3 class="job-title mb-2">Project Title 2</h3>
+                    <p class="text-[--text-secondary-color] text-sm mb-4 flex-grow">Description of another interesting project, perhaps focusing on backend or data processing aspects.</p>
+                     <div class="mb-5 project-tags">
+                        <span class="tag-python">Python</span>
+                        <span class="tag-flask">Flask</span>
+                         <span class="tag-sql">SQLAlchemy</span>
+                    </div>
+                     <div class="mt-auto flex space-x-5">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                            <span class="lucide mr-1.5">&#xe9cb;</span> Live Demo
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                           <span class="lucide mr-1.5">&#xe997;</span> Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="card flex flex-col h-full">
+                     <img src="https://placehold.co/600x400/0a0118/39ff14?text=Project_C" alt="Project 3 Screenshot" class="mb-5 aspect-video object-cover rounded-sm border border-[--border-color]">
+                    <h3 class="job-title mb-2">Project Title 3</h3>
+                    <p class="text-[--text-secondary-color] text-sm mb-4 flex-grow">Showcase a variety of skills, maybe focusing on UI/UX design, data visualization, or a specific framework.</p>
+                     <div class="mb-5 project-tags">
+                        <span class="tag-figma">Figma</span>
+                        <span class="tag-uiux">UI/UX</span>
+                    </div>
+                     <div class="mt-auto flex space-x-5">
+                         <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">
+                            <span class="lucide mr-1.5">&#xea88;</span> View Design
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-mt-20">
+            <h2 class="text-center">Contact // Connect</h2>
+            <div class="card max-w-2xl mx-auto text-center"> <p class="text-lg mb-8 leading-relaxed">
+                    Seeking new opportunities and collaborations. Feel free to reach out via email or connect on social platforms. Let's build the future.
+                </p>
+                <a href="mailto:your.email@example.com" class="btn btn-secondary mb-8 block sm:inline-block mx-auto sm:mx-0"> <span class="lucide">&#xea0c;</span> your.email@example.com
+                </a>
+                <div class="flex justify-center space-x-8"> <a href="#" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="LinkedIn Profile">
+                        <span class="lucide">&#xea50;</span> </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Profile">
+                        <span class="lucide">&#xe997;</span> </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Twitter Profile / X">
+                        <span class="lucide">&#xea9a;</span> </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
+            <p>&copy; <span id="current-year"></span> Your Name // Modern Digital Solutions // All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('section');
+        const options = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // observer.unobserve(entry.target); // Optional: stop observing
+                }
+            });
+        }, options);
+        sections.forEach(section => { observer.observe(section); });
+
+        // Mobile menu toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuButton.querySelector('.lucide');
+            icon.innerHTML = mobileMenu.classList.contains('hidden') ? '&#xe98a;' : '&#xea36;';
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuButton.querySelector('.lucide').innerHTML = '&#xe98a;';
+            });
+        });
+
+        // Active Nav Link Highlighting
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const observerOptions = { root: null, rootMargin: "-40% 0px -60% 0px", threshold: 0 };
+
+        const activateNavLink = (entries, observer) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const correspondingLink = document.querySelector(`nav a[href="#${id}"]`);
+
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                     navLinks.forEach(link => link.classList.remove('active'));
+                     if(correspondingLink) {
+                        correspondingLink.classList.add('active');
+                     }
+                }
+            });
+        };
+
+        const sectionObserver = new IntersectionObserver(activateNavLink, observerOptions);
+        sections.forEach(section => {
+            if (document.querySelector(`nav a[href="#${section.id}"]`)) {
+                sectionObserver.observe(section);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
