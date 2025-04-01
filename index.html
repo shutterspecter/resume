@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="dark"> <head>
+<html lang="en" class="dark"> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - [Your Name] - Senior System Support Engineer</title>
@@ -14,30 +15,29 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class', // Enable dark mode via class
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Saira Extra Condensed', 'sans-serif'],
-                        mono: ['Roboto Mono', 'monospace'], // Monospace font for tech elements
+                        mono: ['Roboto Mono', 'monospace'],
                     },
                     colors: {
-                        // Adjusted for dark mode primarily
                         primary: {
-                            DEFAULT: '#3b82f6', // Blue-500
-                            light: '#60a5fa',  // Blue-400
-                            dark: '#2563eb',   // Blue-600
+                            DEFAULT: '#3b82f6',
+                            light: '#60a5fa',
+                            dark: '#2563eb',
                         },
-                        secondary: { // Accent color
-                            DEFAULT: '#10b981', // Emerald-500
-                            light: '#34d399',  // Emerald-400
-                            dark: '#059669',   // Emerald-600
+                        secondary: {
+                            DEFAULT: '#10b981',
+                            light: '#34d399',
+                            dark: '#059669',
                         },
-                        'base-content': '#e5e7eb', // Default text color (gray-200)
-                        'base-100': '#1f2937', // Dark background (gray-800)
-                        'base-200': '#374151', // Slightly lighter dark bg (gray-700)
-                        'base-300': '#4b5563', // Even lighter dark bg (gray-600)
+                        'base-content': '#e5e7eb',
+                        'base-100': '#1f2937',
+                        'base-200': '#374151',
+                        'base-300': '#4b5563',
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
@@ -54,7 +54,6 @@
     </script>
 
     <style>
-        /* Apply base styles */
         html {
             scroll-behavior: smooth;
         }
@@ -62,17 +61,16 @@
             font-family: theme('fontFamily.sans');
             background-color: theme('colors.base-100');
             color: theme('colors.base-content');
-            padding-top: 5rem; /* Mobile header offset */
+            padding-top: 5rem;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        @media (min-width: 1024px) { /* lg breakpoint */
+        @media (min-width: 1024px) {
              body {
                 padding-top: 0;
-                padding-left: 20rem; /* Increased sidebar width */
+                padding-left: 20rem;
             }
         }
 
-        /* Headings */
         h1, h2, h3, h4, h5, h6 {
             font-family: theme('fontFamily.heading');
             font-weight: 700;
@@ -83,92 +81,84 @@
         h2 { color: theme('colors.primary.light'); font-size: 2.5rem; margin-bottom: 2rem; }
         h3 { color: theme('colors.base-content'); font-size: 1.5rem; margin-bottom: 0.75rem; }
 
-        /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
             width: 100%;
-            height: 100vh; /* Use 100vh for mobile too, allow scrolling within */
-            overflow-y: auto; /* Allow sidebar scroll on mobile if content overflows */
+            height: 100vh;
+            overflow-y: auto;
             z-index: 50;
             background-color: theme('colors.base-200');
             border-right: 1px solid theme('colors.base-300');
             transition: transform 0.3s ease-in-out, background-color 0.3s ease;
-            transform: translateX(-100%); /* Hidden on mobile */
+            transform: translateX(-100%);
         }
         .sidebar.open {
             transform: translateX(0);
         }
-        @media (min-width: 1024px) { /* lg breakpoint */
+        @media (min-width: 1024px) {
             .sidebar {
-                width: 20rem; /* Increased width */
-                height: 100vh; /* Full viewport height */
-                transform: translateX(0); /* Always visible */
+                width: 20rem;
+                height: 100vh;
+                transform: translateX(0);
             }
             #mobile-menu-button, #close-menu-button {
                 display: none;
             }
         }
 
-        /* Sidebar Navigation Links */
         .nav-link {
             display: block;
             padding: 0.8rem 2rem;
-            color: theme('colors.base-content / 80%');
+            color: rgba(229, 231, 235, 0.8);
             font-family: theme('fontFamily.heading');
             font-size: 1.1rem;
             text-transform: uppercase;
             transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease, border-color 0.2s ease;
-            border-left: 4px solid transparent; /* Indicator */
+            border-left: 4px solid transparent;
         }
         .nav-link:hover {
             color: white;
-            background-color: theme('colors.base-300 / 50%');
+            background-color: rgba(75, 85, 99, 0.5);
             border-left-color: theme('colors.secondary.DEFAULT');
-            padding-left: 2.25rem; /* Indent on hover */
+            padding-left: 2.25rem;
         }
         .nav-link.active {
             color: white;
             font-weight: bold;
-            background-color: theme('colors.primary.dark / 30%');
+            background-color: rgba(37, 99, 235, 0.3);
             border-left-color: theme('colors.primary.DEFAULT');
         }
 
-        /* Main Content Area */
-        .main-content {
-             /* Padding handled by body */
-        }
         .content-section {
-            padding: 4rem 0; /* Increased padding */
+            padding: 4rem 0;
             border-bottom: 1px solid theme('colors.base-300');
-            opacity: 0; /* For fade-in animation */
-            animation: fade-in-up 0.6s ease-out forwards;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
-         .content-section:first-child {
-             padding-top: 2rem; /* Less padding for the first section */
-         }
+        .content-section:first-child {
+             padding-top: 2rem;
+        }
         .content-section:last-child {
             border-bottom: none;
-            padding-bottom: 4rem; /* Ensure padding at the very bottom */
+            padding-bottom: 4rem;
         }
 
-        /* Cards for Experience/Education */
         .card {
             background-color: theme('colors.base-200');
-            border-radius: 0.5rem; /* 8px */
-            padding: 1.5rem; /* 24px */
+            border-radius: 0.5rem;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
             border: 1px solid theme('colors.base-300');
             transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px theme('colors.primary.dark / 20%'), 0 4px 6px -4px theme('colors.primary.dark / 20%');
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -4px rgba(37, 99, 235, 0.2);
         }
 
-        /* Skills Section */
         .skill-category {
             margin-bottom: 2rem;
         }
@@ -182,12 +172,12 @@
             padding-bottom: 0.5rem;
         }
         .skill-tag {
-            display: inline-flex; /* Use flex for icon alignment */
+            display: inline-flex;
             align-items: center;
             background-color: theme('colors.base-300');
             color: theme('colors.base-content');
             padding: 0.3rem 0.8rem;
-            border-radius: 0.375rem; /* 6px */
+            border-radius: 0.375rem;
             font-family: theme('fontFamily.mono');
             font-size: 0.8rem;
             margin: 0.25rem;
@@ -195,10 +185,10 @@
             border: 1px solid transparent;
         }
         .skill-tag i {
-             margin-right: 0.4rem; /* Space between icon and text */
+             margin-right: 0.4rem;
              color: theme('colors.primary.light');
              font-size: 0.9em;
-             transition: color 0.2s ease; /* Add transition to icon color */
+             transition: color 0.2s ease;
         }
         .skill-tag:hover {
             background-color: theme('colors.primary.DEFAULT');
@@ -209,7 +199,6 @@
              color: white;
         }
 
-        /* Subheadings & Dates */
         .subheading {
             font-family: theme('fontFamily.heading');
             font-weight: 500;
@@ -223,36 +212,31 @@
             font-family: theme('fontFamily.mono');
             font-size: 0.9rem;
             min-width: 120px;
-            text-align: left; /* Align left on mobile */
+            text-align: left;
         }
-         @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) {
             .experience-date {
-                text-align: right; /* Align right on medium screens and up */
+                text-align: right;
             }
-         }
+        }
 
-
-        /* Links */
         a {
             color: theme('colors.primary.light');
             transition: color 0.2s ease;
         }
         a:hover {
             color: theme('colors.secondary.light');
-            /* text-decoration: underline; */ /* Optional: remove underline for cleaner look */
         }
 
-        /* Mobile Menu Button */
-         #mobile-menu-button {
+        #mobile-menu-button {
              background-color: theme('colors.base-200');
              color: theme('colors.base-content');
              border: 1px solid theme('colors.base-300');
-         }
-         #close-menu-button {
+        }
+        #close-menu-button {
              color: theme('colors.base-content');
-         }
+        }
 
-        /* Scrollbar Styling (Optional, Webkit browsers) */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -268,13 +252,16 @@
             background-color: theme('colors.primary.light');
         }
 
-        /* Ensure list bullets are visible in dark mode */
         .list-disc li::marker {
             color: theme('colors.base-content');
         }
 
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
-    </head>
+</head>
 <body class="antialiased">
 
     <button id="mobile-menu-button" class="lg:hidden fixed top-4 right-4 z-[60] p-3 rounded-md shadow-lg">
@@ -282,7 +269,7 @@
     </button>
 
     <nav id="sidebar" class="sidebar flex flex-col">
-         <button id="close-menu-button" class="lg:hidden absolute top-4 right-4 p-3 text-2xl">
+        <button id="close-menu-button" class="lg:hidden absolute top-4 right-4 p-3 text-2xl">
             <i class="fas fa-times"></i>
         </button>
 
@@ -292,7 +279,9 @@
             <p class="text-primary-light text-sm font-mono">Senior System Support Engineer</p>
         </div>
 
-        <ul class="w-full flex-grow"> <li><a href="#about" class="nav-link active">About</a></li> <li><a href="#experience" class="nav-link">Experience</a></li>
+        <ul class="w-full flex-grow">
+            <li><a href="#about" class="nav-link active">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
@@ -301,31 +290,32 @@
         </ul>
 
         <div class="p-6 mt-auto text-center text-xs text-base-content/50 font-mono">
-            Last Updated: <span id="lastUpdatedDate">April 2025</span> </div>
+            Last Updated: <span id="lastUpdatedDate">April 2025</span>
+        </div>
     </nav>
 
     <div class="main-content container mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
 
         <section id="about" class="content-section">
             <h1 class="text-5xl md:text-6xl font-bold text-white mb-1 lg:hidden">[Your Name]</h1>
-             <div class="subheading mb-6 text-lg lg:hidden">Senior System Support Engineer</div>
+            <div class="subheading mb-6 text-lg lg:hidden">Senior System Support Engineer</div>
 
             <p class="text-lg leading-relaxed mb-6">
                 Highly motivated and experienced Senior System Support Engineer with 11 years of proven success in managing, troubleshooting, and maintaining complex IT infrastructures. Expertise spans across Windows and Linux environments, virtualization, network administration, and cloud platforms. Dedicated to providing exceptional technical support, optimizing system performance, and implementing robust solutions to ensure business continuity. Seeking to leverage extensive technical skills and leadership abilities in a challenging new role.
             </p>
-             <div class="flex flex-wrap gap-x-6 gap-y-2 items-center mb-6 font-mono text-sm">
-                 <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-primary-light"></i> [City, State]</span>
-                 <a href="mailto:your.email@example.com" class="flex items-center hover:text-secondary-light"><i class="fas fa-envelope mr-2 text-primary-light"></i> your.email@example.com</a>
-                 <a href="tel:+15551234567" class="flex items-center hover:text-secondary-light"><i class="fas fa-phone mr-2 text-primary-light"></i> +1 (555) 123-4567</a>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 items-center mb-6 font-mono text-sm">
+                <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-primary-light"></i> [City, State]</span>
+                <a href="mailto:your.email@example.com" class="flex items-center hover:text-secondary-light"><i class="fas fa-envelope mr-2 text-primary-light"></i> your.email@example.com</a>
+                <a href="tel:+15551234567" class="flex items-center hover:text-secondary-light"><i class="fas fa-phone mr-2 text-primary-light"></i> +1 (555) 123-4567</a>
             </div>
             <div class="flex space-x-5">
-                 <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="LinkedIn">
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                 <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="GitHub">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                 <a href="#" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="Portfolio/Website">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="Portfolio/Website">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
@@ -354,14 +344,14 @@
                 </ul>
             </div>
             <div class="card">
-                 <div class="flex flex-col md:flex-row justify-between mb-2">
+                <div class="flex flex-col md:flex-row justify-between mb-2">
                     <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">System Support Engineer</h3>
                         <div class="subheading">Previous Company Name</div>
                     </div>
                     <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">Mar 20XX - Dec 20XX</span></div>
                 </div>
-                 <ul class="list-disc list-outside ml-5 text-base-content/90 space-y-1 text-sm leading-relaxed">
+                <ul class="list-disc list-outside ml-5 text-base-content/90 space-y-1 text-sm leading-relaxed">
                     <li>Provided comprehensive technical support for hardware (desktops, laptops, servers), software applications, and network connectivity issues.</li>
                     <li>Assisted senior engineers in server maintenance, patching, and upgrade cycles.</li>
                     <li>Managed user accounts, mailboxes (Exchange/O365), and permissions within Active Directory.</li>
@@ -369,11 +359,11 @@
                     <li>Responded to and resolved support tickets within SLA targets using Jira Service Desk/ServiceNow.</li>
                 </ul>
             </div>
-             </section>
+        </section>
 
-         <section id="projects" class="content-section">
+        <section id="projects" class="content-section">
             <h2 class="text-primary-light">Projects</h2>
-             <div class="card">
+            <div class="card">
                 <div class="flex flex-col md:flex-row justify-between mb-2">
                     <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">[Project Title, e.g., Homelab Virtualization Setup]</h3>
@@ -385,32 +375,32 @@
                     Describe the project goals, your role, the technologies used, and the outcome or key learnings. For example: Deployed a multi-node Proxmox cluster on repurposed hardware to host various services like Pi-hole, Home Assistant, and a media server. Configured VLANs for network segmentation and automated backups using PBS.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                     <span class="skill-tag"><i class="fas fa-server"></i> Proxmox VE</span>
-                     <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
-                     <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
-                     <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
-                     </div>
-                 <a href="[Link to GitHub Repo or Demo if available]" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm hover:text-secondary-light transition-colors duration-200">
-                     <i class="fab fa-github mr-1"></i> View on GitHub <i class="fas fa-external-link-alt ml-1 text-xs"></i>
-                 </a>
+                    <span class="skill-tag"><i class="fas fa-server"></i> Proxmox VE</span>
+                    <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+                    <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
+                    <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
+                </div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm hover:text-secondary-light transition-colors duration-200">
+                    <i class="fab fa-github mr-1"></i> View on GitHub <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                </a>
             </div>
-             <div class="card">
-                 <div class="flex flex-col md:flex-row justify-between mb-2">
-                     <div class="flex-grow mb-1 md:mb-0">
+            <div class="card">
+                <div class="flex flex-col md:flex-row justify-between mb-2">
+                    <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">[Project Title, e.g., Automated Server Patching Script]</h3>
                         <div class="subheading">[Work Project / Personal Script]</div>
                     </div>
                     <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">[Date]</span></div>
                 </div>
-                 <p class="text-base-content/90 text-sm leading-relaxed mb-3">
+                <p class="text-base-content/90 text-sm leading-relaxed mb-3">
                     Developed a PowerShell script to automate the monthly patching process for Windows servers, including pre-checks, patch installation, reboot coordination, and post-checks with email reporting. Reduced manual effort by X% and improved compliance.
                 </p>
-                 <div class="flex flex-wrap gap-2">
-                     <span class="skill-tag"><i class="fab fa-windows"></i> PowerShell</span>
-                     <span class="skill-tag"><i class="fas fa-cogs"></i> Automation</span>
-                     <span class="skill-tag"><i class="fas fa-server"></i> Windows Server</span>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag"><i class="fab fa-windows"></i> PowerShell</span>
+                    <span class="skill-tag"><i class="fas fa-cogs"></i> Automation</span>
+                    <span class="skill-tag"><i class="fas fa-server"></i> Windows Server</span>
                 </div>
-                 </div>
+            </div>
             <p class="text-center text-base-content/70 italic mt-6">Add details of your key technical projects here.</p>
         </section>
 
@@ -430,58 +420,58 @@
 
                 <div class="skill-category">
                     <h4><i class="fas fa-network-wired mr-2"></i> Networking</h4>
-                     <div class="flex flex-wrap">
+                    <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fas fa-network-wired"></i> TCP/IP Suite</span>
                         <span class="skill-tag"><i class="fas fa-route"></i> DNS, DHCP, VPN</span>
-                        <span class="skill-tag"><i class="fas fa-fire-alt"></i> Firewalls (Palo Alto, Cisco ASA - Basic Config)</span>
+                        <span class="skill-tag"><i class="fas fa-fire-alt"></i> Firewalls (Palo Alto, Cisco ASA)</span>
                         <span class="skill-tag"><i class="fas fa-wifi"></i> Wireless Networking</span>
-                        <span class="skill-tag"><i class="fas fa-exchange-alt"></i> Load Balancing Concepts</span>
+                        <span class="skill-tag"><i class="fas fa-exchange-alt"></i> Load Balancing</span>
                     </div>
                 </div>
 
-                 <div class="skill-category">
+                <div class="skill-category">
                     <h4><i class="fas fa-cloud mr-2"></i> Virtualization & Cloud</h4>
-                     <div class="flex flex-wrap">
-                        <span class="skill-tag"><i class="fas fa-server"></i> VMware vSphere (ESXi, vCenter)</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag"><i class="fas fa-server"></i> VMware vSphere</span>
                         <span class="skill-tag"><i class="fab fa-microsoft"></i> Microsoft Hyper-V</span>
-                        <span class="skill-tag"><i class="fab fa-aws"></i> AWS (EC2, S3, VPC, IAM Basics)</span>
-                        <span class="skill-tag"><i class="fab fa-microsoft"></i> Azure (VMs, VNet, Entra ID Basics)</span>
-                         <span class="skill-tag"><i class="fas fa-box-open"></i> Container Concepts (Docker)</span>
+                        <span class="skill-tag"><i class="fab fa-aws"></i> AWS (EC2, S3, VPC)</span>
+                        <span class="skill-tag"><i class="fab fa-microsoft"></i> Azure (VMs, VNet)</span>
+                        <span class="skill-tag"><i class="fas fa-box-open"></i> Docker</span>
                     </div>
                 </div>
 
-                 <div class="skill-category">
+                <div class="skill-category">
                     <h4><i class="fas fa-code mr-2"></i> Scripting & Automation</h4>
-                     <div class="flex flex-wrap">
+                    <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fab fa-windows"></i> PowerShell</span>
                         <span class="skill-tag"><i class="fas fa-terminal"></i> Bash Scripting</span>
-                        <span class="skill-tag"><i class="fab fa-python"></i> Python (Basic/Intermediate)</span>
-                        <span class="skill-tag"><i class="fas fa-cogs"></i> Ansible (Basic Playbooks)</span>
+                        <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fas fa-cogs"></i> Ansible</span>
                         <span class="skill-tag"><i class="fas fa-robot"></i> Task Automation</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h4><i class="fas fa-shield-alt mr-2"></i> Directory Services & Security</h4>
-                     <div class="flex flex-wrap">
-                         <span class="skill-tag"><i class="fas fa-users-cog"></i> Active Directory / Entra ID</span>
-                         <span class="skill-tag"><i class="fas fa-fingerprint"></i> Group Policy (GPO)</span>
-                         <span class="skill-tag"><i class="fas fa-lock"></i> Security Hardening</span>
-                         <span class="skill-tag"><i class="fas fa-user-secret"></i> Identity & Access Management (IAM)</span>
-                         <span class="skill-tag"><i class="fas fa-shield-virus"></i> Endpoint Security (Antivirus, EDR)</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag"><i class="fas fa-users-cog"></i> Active Directory</span>
+                        <span class="skill-tag"><i class="fas fa-fingerprint"></i> Group Policy</span>
+                        <span class="skill-tag"><i class="fas fa-lock"></i> Security Hardening</span>
+                        <span class="skill-tag"><i class="fas fa-user-secret"></i> IAM</span>
+                        <span class="skill-tag"><i class="fas fa-shield-virus"></i> Endpoint Security</span>
                     </div>
                 </div>
 
-                 <div class="skill-category">
+                <div class="skill-category">
                     <h4><i class="fas fa-tools mr-2"></i> Tools & Methodologies</h4>
-                     <div class="flex flex-wrap">
+                    <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fas fa-tasks"></i> ITIL Framework</span>
                         <span class="skill-tag"><i class="fab fa-jira"></i> Jira / Confluence</span>
                         <span class="skill-tag"><i class="fas fa-headset"></i> ServiceNow</span>
-                        <span class="skill-tag"><i class="fas fa-chart-line"></i> Monitoring (Nagios, Zabbix, Grafana)</span>
-                        <span class="skill-tag"><i class="fas fa-database"></i> Backup Solutions (Veeam)</span>
-                        <span class="skill-tag"><i class="fas fa-comments"></i> Technical Documentation</span>
-                         <span class="skill-tag"><i class="fas fa-users"></i> Vendor Management</span>
+                        <span class="skill-tag"><i class="fas fa-chart-line"></i> Monitoring</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> Backup Solutions</span>
+                        <span class="skill-tag"><i class="fas fa-comments"></i> Documentation</span>
+                        <span class="skill-tag"><i class="fas fa-users"></i> Vendor Management</span>
                     </div>
                 </div>
             </div>
@@ -501,11 +491,11 @@
                     Relevant coursework: [e.g., Network Infrastructure, Operating Systems, Database Management, Cybersecurity Fundamentals]. (Optional: Add GPA or honors if noteworthy).
                 </p>
             </div>
-            </section>
+        </section>
 
         <section id="awards" class="content-section">
             <h2 class="text-primary-light">Awards & Certifications</h2>
-             <ul class="list-none space-y-3">
+            <ul class="list-none space-y-3">
                 <li class="flex items-start">
                     <i class="fas fa-award text-secondary-light mr-3 mt-1 text-lg"></i>
                     <div>
@@ -513,168 +503,115 @@
                         <span class="text-sm text-base-content/70">CompTIA - [Date Obtained or Expiry]</span>
                     </div>
                 </li>
-                 <li class="flex items-start">
+                <li class="flex items-start">
                     <i class="fas fa-award text-secondary-light mr-3 mt-1 text-lg"></i>
                     <div>
                         <span class="font-semibold text-base-content">[Certification Name, e.g., Microsoft Certified: Azure Fundamentals]</span><br>
-                         <span class="text-sm text-base-content/70">Microsoft - [Date Obtained]</span>
+                        <span class="text-sm text-base-content/70">Microsoft - [Date Obtained]</span>
                     </div>
                 </li>
-                 <li class="flex items-start">
+                <li class="flex items-start">
                     <i class="fas fa-award text-secondary-light mr-3 mt-1 text-lg"></i>
                     <div>
                         <span class="font-semibold text-base-content">[Certification Name, e.g., ITIL Foundation Certificate]</span><br>
-                         <span class="text-sm text-base-content/70">Axelos - [Date Obtained]</span>
+                        <span class="text-sm text-base-content/70">Axelos - [Date Obtained]</span>
                     </div>
                 </li>
-                 <li class="flex items-start">
+                <li class="flex items-start">
                     <i class="fas fa-trophy text-yellow-400 mr-3 mt-1 text-lg"></i>
-                     <div>
+                    <div>
                         <span class="font-semibold text-base-content">[Award Name or Recognition - e.g., Employee Excellence Award]</span><br>
                         <span class="text-sm text-base-content/70">[Awarding Organization/Company] - [Year]</span>
                     </div>
                 </li>
-                 <li class="italic text-base-content/60 text-sm mt-4">* Fill in or remove items as applicable *</li>
+                <li class="italic text-center text-base-content/70 mt-6">Replace these examples with your own certifications, credentials, and professional achievements.</li>
             </ul>
         </section>
 
         <section id="interests" class="content-section">
             <h2 class="text-primary-light">Interests</h2>
-            <p class="text-base-content/90 leading-relaxed text-base">
-                Beyond my professional focus on system engineering, I'm passionate about exploring emerging technologies, particularly in the realms of home automation and cybersecurity. I actively maintain a homelab environment for testing new software and configurations. When away from the keyboard, I enjoy [Your Hobby 1, e.g., hiking challenging trails, landscape photography, competitive gaming], [Your Hobby 2, e.g., experimenting with cooking, following Formula 1], and contributing to [Your Interest, e.g., relevant open-source projects, local tech meetups].
-                <br><br> </p>
+            <div class="text-base-content/90 text-sm leading-relaxed space-y-4">
+                <p>
+                    Beyond my professional endeavors, I'm passionate about [Hobby/Interest]. When not immersed in the world of IT, you can find me [description of activities you enjoy].
+                </p>
+                <p>
+                    I also enjoy [Second Hobby/Interest], which helps me maintain a balanced perspective and brings creativity to my technical problem-solving approach.
+                </p>
+                <p>
+                    I'm constantly learning about emerging technologies through online courses, technical blogs, and participating in [relevant community, forums, or meetups].
+                </p>
+            </div>
         </section>
 
-    </div> <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    </div>
 
-            // --- Mobile Menu Toggle ---
-            const menuButton = document.getElementById('mobile-menu-button');
-            const closeButton = document.getElementById('close-menu-button');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle functionality
             const sidebar = document.getElementById('sidebar');
-            const navLinks = sidebar.querySelectorAll('.nav-link');
-
-            if (menuButton && sidebar && closeButton) {
-                menuButton.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent event bubbling
-                    sidebar.classList.add('open');
-                });
-
-                closeButton.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                });
-
-                // Close sidebar if clicking outside of it on mobile
-                document.addEventListener('click', (e) => {
-                     if (window.innerWidth < 1024 && sidebar.classList.contains('open')) {
-                        // Check if the click is outside the sidebar and also not on the menu button itself
-                        if (!sidebar.contains(e.target) && !menuButton.contains(e.target)) {
-                             sidebar.classList.remove('open');
-                        }
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                sidebar.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenuButton.addEventListener('click', function() {
+                sidebar.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+            
+            // Navigation active state
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            function setActiveNavLink() {
+                let scrollPosition = window.scrollY + 100;
+                
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach((link) => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
                     }
-                });
-
-                // Close mobile menu after clicking a nav link
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (window.innerWidth < 1024) { // Only on mobile/tablet
-                            sidebar.classList.remove('open');
-                        }
-                    });
                 });
             }
-
-            // --- Smooth Scrolling & Active Link Highlighting ---
-            const sections = document.querySelectorAll('section[id]');
-            const observerOptions = {
-                root: null, // relative to document viewport
-                rootMargin: '-50px 0px -50% 0px', // Adjust rootMargin: top offset, trigger earlier when scrolling down
-                threshold: 0 // Trigger as soon as any part enters the viewport adjusted by rootMargin
-            };
-
-            let activeNavLink = null; // Keep track of the currently active link
-
-            const observer = new IntersectionObserver((entries) => {
-                let bestVisibleSectionId = null;
-                let maxVisibleRatio = 0;
-
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.intersectionRatio > maxVisibleRatio) {
-                         maxVisibleRatio = entry.intersectionRatio;
-                         bestVisibleSectionId = entry.target.getAttribute('id');
-                    }
-                     // Trigger animation if section is intersecting enough
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.1) { // Animate when slightly visible
-                        entry.target.style.opacity = '1';
-                        entry.target.classList.add('animate-fade-in-up');
-                    }
-                });
-
-                 // Update active link only if a section is determined to be the best visible one
-                 if (bestVisibleSectionId) {
-                    const newActiveNavLink = document.querySelector(`.nav-link[href="#${bestVisibleSectionId}"]`);
-                    if (newActiveNavLink !== activeNavLink) {
-                        // Remove active class from the previous link
-                        if (activeNavLink) {
-                            activeNavLink.classList.remove('active');
-                        }
-                        // Add active class to the new link
-                        if (newActiveNavLink) {
-                             newActiveNavLink.classList.add('active');
-                             activeNavLink = newActiveNavLink; // Update the tracked active link
-                        } else {
-                             activeNavLink = null; // Reset if no corresponding link found
-                        }
-                    }
-                 } else {
-                     // Optional: If no section is clearly visible based on criteria, maybe remove active class?
-                     // Or keep the last active one highlighted until a new one becomes dominant.
-                     // Let's keep the last active one for smoother UX.
-                 }
-
-            }, observerOptions);
-
-            // Observe each section
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-             // --- Smooth scroll for internal links ---
-             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    // Ensure it's a valid internal link and not just "#"
-                    if (targetId && targetId.length > 1 && targetId.startsWith('#')) {
-                         const targetElement = document.querySelector(targetId);
-                         if (targetElement) {
-                            e.preventDefault(); // Prevent default only if target exists
-                            // Calculate offset if needed (e.g., for fixed headers, but handled by CSS padding/scroll-margin)
-                            const offsetTop = targetElement.offsetTop;
-
-                            window.scrollTo({
-                                top: offsetTop,
-                                behavior: 'smooth'
-                            });
-
-                            // Optional: Manually set active class immediately on click for faster feedback
-                            // document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                            // this.classList.add('active');
-                            // activeNavLink = this; // Update tracked active link
-                         }
+            
+            // Add click event to nav links to close menu on mobile
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 1024) {
+                        sidebar.classList.remove('open');
+                        document.body.style.overflow = '';
                     }
                 });
             });
-
-            // --- Update Last Updated Date ---
-            const lastUpdatedElement = document.getElementById('lastUpdatedDate');
-            if (lastUpdatedElement) {
-                 const today = new Date();
-                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                 lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
+            
+            window.addEventListener('scroll', setActiveNavLink);
+            setActiveNavLink();
+            
+            // Control animations timing
+            const contentSections = document.querySelectorAll('.content-section');
+            contentSections.forEach((section, index) => {
+                section.style.animationDelay = (index * 0.1) + 's';
+            });
+            
+            // Set current year in footer if needed
+            const currentYear = new Date().getFullYear();
+            const lastUpdatedDate = document.getElementById('lastUpdatedDate');
+            if (lastUpdatedDate.textContent.includes('YYYY')) {
+                lastUpdatedDate.textContent = lastUpdatedDate.textContent.replace('YYYY', currentYear);
             }
-
-
-        }); // End DOMContentLoaded
+        });
     </script>
-    </body>
+
+</body>
 </html>
