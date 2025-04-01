@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="dark"> {/* Default to dark mode */}
-<head>
+<html lang="en" class="dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume - [Your Name] - Senior System Support Engineer</title>
 
-    {/* Load Tailwind CSS */}
     <script src="https://cdn.tailwindcss.com"></script>
 
-    {/* Load Font Awesome */}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    {/* Load Google Fonts */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Saira+Extra+Condensed:wght@500;700&display=swap" rel="stylesheet">
 
-    {/* Tailwind Configuration */}
     <script>
         tailwind.config = {
             darkMode: 'class', // Enable dark mode via class
@@ -58,7 +53,6 @@
         }
     </script>
 
-    {/* ========================== CSS STYLES START ========================== */}
     <style>
         /* Apply base styles */
         html {
@@ -96,7 +90,8 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            height: auto; /* Mobile */
+            height: 100vh; /* Use 100vh for mobile too, allow scrolling within */
+            overflow-y: auto; /* Allow sidebar scroll on mobile if content overflows */
             z-index: 50;
             background-color: theme('colors.base-200');
             border-right: 1px solid theme('colors.base-300');
@@ -109,7 +104,7 @@
         @media (min-width: 1024px) { /* lg breakpoint */
             .sidebar {
                 width: 20rem; /* Increased width */
-                height: 100vh;
+                height: 100vh; /* Full viewport height */
                 transform: translateX(0); /* Always visible */
             }
             #mobile-menu-button, #close-menu-button {
@@ -125,7 +120,7 @@
             font-family: theme('fontFamily.heading');
             font-size: 1.1rem;
             text-transform: uppercase;
-            transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
+            transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease, border-color 0.2s ease;
             border-left: 4px solid transparent; /* Indicator */
         }
         .nav-link:hover {
@@ -156,6 +151,7 @@
          }
         .content-section:last-child {
             border-bottom: none;
+            padding-bottom: 4rem; /* Ensure padding at the very bottom */
         }
 
         /* Cards for Experience/Education */
@@ -195,13 +191,14 @@
             font-family: theme('fontFamily.mono');
             font-size: 0.8rem;
             margin: 0.25rem;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
             border: 1px solid transparent;
         }
         .skill-tag i {
              margin-right: 0.4rem; /* Space between icon and text */
              color: theme('colors.primary.light');
              font-size: 0.9em;
+             transition: color 0.2s ease; /* Add transition to icon color */
         }
         .skill-tag:hover {
             background-color: theme('colors.primary.DEFAULT');
@@ -226,8 +223,14 @@
             font-family: theme('fontFamily.mono');
             font-size: 0.9rem;
             min-width: 120px;
-            text-align: right;
+            text-align: left; /* Align left on mobile */
         }
+         @media (min-width: 768px) { /* md breakpoint */
+            .experience-date {
+                text-align: right; /* Align right on medium screens and up */
+            }
+         }
+
 
         /* Links */
         a {
@@ -236,7 +239,7 @@
         }
         a:hover {
             color: theme('colors.secondary.light');
-            text-decoration: underline;
+            /* text-decoration: underline; */ /* Optional: remove underline for cleaner look */
         }
 
         /* Mobile Menu Button */
@@ -265,35 +268,31 @@
             background-color: theme('colors.primary.light');
         }
 
-    </style>
-    {/* =========================== CSS STYLES END =========================== */}
+        /* Ensure list bullets are visible in dark mode */
+        .list-disc li::marker {
+            color: theme('colors.base-content');
+        }
 
-</head>
+    </style>
+    </head>
 <body class="antialiased">
 
-    {/* Mobile Menu Toggle Button */}
     <button id="mobile-menu-button" class="lg:hidden fixed top-4 right-4 z-[60] p-3 rounded-md shadow-lg">
         <i class="fas fa-bars text-xl"></i>
     </button>
 
-    {/* Sidebar Navigation */}
     <nav id="sidebar" class="sidebar flex flex-col">
-         {/* Close button for mobile */}
          <button id="close-menu-button" class="lg:hidden absolute top-4 right-4 p-3 text-2xl">
             <i class="fas fa-times"></i>
         </button>
 
-        {/* Sidebar Header */}
         <div class="text-center pt-12 pb-8 px-6">
             <img class="h-36 w-36 rounded-full border-4 border-primary-light mx-auto mb-4 shadow-md" src="https://placehold.co/144x144/374151/3b82f6?text=YN&font=Saira%20Extra%20Condensed" alt="Profile Picture Placeholder" onerror="this.onerror=null; this.src='https://placehold.co/144x144/4b5563/e5e7eb?text=Error';">
             <h1 class="text-2xl font-bold text-white">[Your Name]</h1>
             <p class="text-primary-light text-sm font-mono">Senior System Support Engineer</p>
         </div>
 
-        {/* Navigation Links */}
-        <ul class="w-full flex-grow"> {/* flex-grow pushes potential footer down */}
-            <li><a href="#about" class="nav-link active">About</a></li> {/* Start with About active */}
-            <li><a href="#experience" class="nav-link">Experience</a></li>
+        <ul class="w-full flex-grow"> <li><a href="#about" class="nav-link active">About</a></li> <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
@@ -301,55 +300,46 @@
             <li><a href="#interests" class="nav-link">Interests</a></li>
         </ul>
 
-        {/* Sidebar Footer (Optional) */}
         <div class="p-6 mt-auto text-center text-xs text-base-content/50 font-mono">
-            Last Updated: April 2025 {/* Or use JS for dynamic date */}
-        </div>
+            Last Updated: <span id="lastUpdatedDate">April 2025</span> </div>
     </nav>
 
-    {/* Main Content Area */}
     <div class="main-content container mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
 
-        {/* About Section */}
         <section id="about" class="content-section">
-            {/* Name/Title repeated here for context when sidebar might be hidden */}
             <h1 class="text-5xl md:text-6xl font-bold text-white mb-1 lg:hidden">[Your Name]</h1>
              <div class="subheading mb-6 text-lg lg:hidden">Senior System Support Engineer</div>
 
             <p class="text-lg leading-relaxed mb-6">
                 Highly motivated and experienced Senior System Support Engineer with 11 years of proven success in managing, troubleshooting, and maintaining complex IT infrastructures. Expertise spans across Windows and Linux environments, virtualization, network administration, and cloud platforms. Dedicated to providing exceptional technical support, optimizing system performance, and implementing robust solutions to ensure business continuity. Seeking to leverage extensive technical skills and leadership abilities in a challenging new role.
             </p>
-             {/* Contact Info & Social Links */}
-            <div class="flex flex-wrap gap-x-6 gap-y-2 items-center mb-6 font-mono text-sm">
+             <div class="flex flex-wrap gap-x-6 gap-y-2 items-center mb-6 font-mono text-sm">
                  <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-primary-light"></i> [City, State]</span>
                  <a href="mailto:your.email@example.com" class="flex items-center hover:text-secondary-light"><i class="fas fa-envelope mr-2 text-primary-light"></i> your.email@example.com</a>
                  <a href="tel:+15551234567" class="flex items-center hover:text-secondary-light"><i class="fas fa-phone mr-2 text-primary-light"></i> +1 (555) 123-4567</a>
             </div>
             <div class="flex space-x-5">
-                 <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl" title="LinkedIn">
+                 <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                 <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl" title="GitHub">
+                 <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                 {/* Add other relevant links like a personal website/portfolio */}
-                 <a href="#" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl" title="Portfolio/Website">
+                 <a href="#" target="_blank" rel="noopener noreferrer" class="text-base-content/70 hover:text-primary-light text-3xl transition-colors duration-200" title="Portfolio/Website">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
         </section>
 
-        {/* Experience Section */}
         <section id="experience" class="content-section">
             <h2 class="text-primary-light">Experience</h2>
-            {/* Job 1 */}
             <div class="card">
                 <div class="flex flex-col md:flex-row justify-between mb-2">
                     <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">Senior System Support Engineer</h3>
                         <div class="subheading">Company Name</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="experience-date">Jan 20XX - Present</span></div>
+                    <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">Jan 20XX - Present</span></div>
                 </div>
                 <ul class="list-disc list-outside ml-5 text-base-content/90 space-y-1 text-sm leading-relaxed">
                     <li>Provide Tier 2/3 technical support across servers, networks, and end-user systems, ensuring high availability and performance.</li>
@@ -363,14 +353,13 @@
                     <li>Lead small projects, document system configurations, and mentor junior team members.</li>
                 </ul>
             </div>
-            {/* Job 2 */}
             <div class="card">
                  <div class="flex flex-col md:flex-row justify-between mb-2">
                     <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">System Support Engineer</h3>
                         <div class="subheading">Previous Company Name</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="experience-date">Mar 20XX - Dec 20XX</span></div>
+                    <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">Mar 20XX - Dec 20XX</span></div>
                 </div>
                  <ul class="list-disc list-outside ml-5 text-base-content/90 space-y-1 text-sm leading-relaxed">
                     <li>Provided comprehensive technical support for hardware (desktops, laptops, servers), software applications, and network connectivity issues.</li>
@@ -380,20 +369,17 @@
                     <li>Responded to and resolved support tickets within SLA targets using Jira Service Desk/ServiceNow.</li>
                 </ul>
             </div>
-             {/* Add more past roles as needed */}
-        </section>
+             </section>
 
-         {/* Projects Section (NEW - Placeholder) */}
-        <section id="projects" class="content-section">
+         <section id="projects" class="content-section">
             <h2 class="text-primary-light">Projects</h2>
-             {/* Project 1 */}
              <div class="card">
                 <div class="flex flex-col md:flex-row justify-between mb-2">
                     <div class="flex-grow mb-1 md:mb-0">
                         <h3 class="text-white">[Project Title, e.g., Homelab Virtualization Setup]</h3>
                         <div class="subheading">[Brief Context, e.g., Personal Project / Contributor]</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="experience-date">[Date/Ongoing]</span></div>
+                    <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">[Date/Ongoing]</span></div>
                 </div>
                 <p class="text-base-content/90 text-sm leading-relaxed mb-3">
                     Describe the project goals, your role, the technologies used, and the outcome or key learnings. For example: Deployed a multi-node Proxmox cluster on repurposed hardware to host various services like Pi-hole, Home Assistant, and a media server. Configured VLANs for network segmentation and automated backups using PBS.
@@ -403,16 +389,19 @@
                      <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
                      <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
                      <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
-                     {/* Add relevant tech tags */}
-                </div>
-                 <a href="[Link to GitHub Repo or Demo if available]" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm hover:text-secondary-light">
+                     </div>
+                 <a href="[Link to GitHub Repo or Demo if available]" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm hover:text-secondary-light transition-colors duration-200">
                      <i class="fab fa-github mr-1"></i> View on GitHub <i class="fas fa-external-link-alt ml-1 text-xs"></i>
                  </a>
             </div>
-             {/* Project 2 (Placeholder) */}
              <div class="card">
-                 <h3 class="text-white">[Project Title, e.g., Automated Server Patching Script]</h3>
-                 <div class="subheading">[Work Project / Personal Script]</div>
+                 <div class="flex flex-col md:flex-row justify-between mb-2">
+                     <div class="flex-grow mb-1 md:mb-0">
+                        <h3 class="text-white">[Project Title, e.g., Automated Server Patching Script]</h3>
+                        <div class="subheading">[Work Project / Personal Script]</div>
+                    </div>
+                    <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">[Date]</span></div>
+                </div>
                  <p class="text-base-content/90 text-sm leading-relaxed mb-3">
                     Developed a PowerShell script to automate the monthly patching process for Windows servers, including pre-checks, patch installation, reboot coordination, and post-checks with email reporting. Reduced manual effort by X% and improved compliance.
                 </p>
@@ -421,18 +410,14 @@
                      <span class="skill-tag"><i class="fas fa-cogs"></i> Automation</span>
                      <span class="skill-tag"><i class="fas fa-server"></i> Windows Server</span>
                 </div>
-                 {/* Link if applicable */}
-            </div>
-            {/* Add more projects */}
+                 </div>
             <p class="text-center text-base-content/70 italic mt-6">Add details of your key technical projects here.</p>
         </section>
 
-        {/* Skills Section (Enhanced) */}
         <section id="skills" class="content-section">
             <h2 class="text-primary-light">Technical Skills</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                {/* Operating Systems */}
                 <div class="skill-category">
                     <h4><i class="fas fa-laptop-code mr-2"></i> Operating Systems</h4>
                     <div class="flex flex-wrap">
@@ -443,7 +428,6 @@
                     </div>
                 </div>
 
-                {/* Networking */}
                 <div class="skill-category">
                     <h4><i class="fas fa-network-wired mr-2"></i> Networking</h4>
                      <div class="flex flex-wrap">
@@ -455,8 +439,7 @@
                     </div>
                 </div>
 
-                 {/* Virtualization & Cloud */}
-                <div class="skill-category">
+                 <div class="skill-category">
                     <h4><i class="fas fa-cloud mr-2"></i> Virtualization & Cloud</h4>
                      <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fas fa-server"></i> VMware vSphere (ESXi, vCenter)</span>
@@ -467,8 +450,7 @@
                     </div>
                 </div>
 
-                 {/* Scripting & Automation */}
-                <div class="skill-category">
+                 <div class="skill-category">
                     <h4><i class="fas fa-code mr-2"></i> Scripting & Automation</h4>
                      <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fab fa-windows"></i> PowerShell</span>
@@ -479,8 +461,7 @@
                     </div>
                 </div>
 
-                {/* Directory Services & Security */}
-                 <div class="skill-category">
+                <div class="skill-category">
                     <h4><i class="fas fa-shield-alt mr-2"></i> Directory Services & Security</h4>
                      <div class="flex flex-wrap">
                          <span class="skill-tag"><i class="fas fa-users-cog"></i> Active Directory / Entra ID</span>
@@ -491,8 +472,7 @@
                     </div>
                 </div>
 
-                 {/* Tools & Methodologies */}
-                <div class="skill-category">
+                 <div class="skill-category">
                     <h4><i class="fas fa-tools mr-2"></i> Tools & Methodologies</h4>
                      <div class="flex flex-wrap">
                         <span class="skill-tag"><i class="fas fa-tasks"></i> ITIL Framework</span>
@@ -507,7 +487,6 @@
             </div>
         </section>
 
-        {/* Education Section */}
         <section id="education" class="content-section">
             <h2 class="text-primary-light">Education</h2>
             <div class="card">
@@ -516,16 +495,14 @@
                         <h3 class="text-white">University Name</h3>
                         <div class="subheading">[Your Degree Name, e.g., Bachelor of Science in Information Technology]</div>
                     </div>
-                    <div class="flex-shrink-0"><span class="experience-date">Graduated: May 20XX</span></div>
+                    <div class="flex-shrink-0 mt-1 md:mt-0"><span class="experience-date">Graduated: May 20XX</span></div>
                 </div>
                 <p class="text-base-content/90 text-sm leading-relaxed">
                     Relevant coursework: [e.g., Network Infrastructure, Operating Systems, Database Management, Cybersecurity Fundamentals]. (Optional: Add GPA or honors if noteworthy).
                 </p>
             </div>
-            {/* Add other degrees or relevant education */}
-        </section>
+            </section>
 
-        {/* Awards & Certifications Section */}
         <section id="awards" class="content-section">
             <h2 class="text-primary-light">Awards & Certifications</h2>
              <ul class="list-none space-y-3">
@@ -557,24 +534,18 @@
                         <span class="text-sm text-base-content/70">[Awarding Organization/Company] - [Year]</span>
                     </div>
                 </li>
-                 {/* Add more - Use fas fa-award for certs, fas fa-trophy for awards */}
                  <li class="italic text-base-content/60 text-sm mt-4">* Fill in or remove items as applicable *</li>
             </ul>
         </section>
 
-        {/* Interests Section */}
         <section id="interests" class="content-section">
             <h2 class="text-primary-light">Interests</h2>
             <p class="text-base-content/90 leading-relaxed text-base">
                 Beyond my professional focus on system engineering, I'm passionate about exploring emerging technologies, particularly in the realms of home automation and cybersecurity. I actively maintain a homelab environment for testing new software and configurations. When away from the keyboard, I enjoy [Your Hobby 1, e.g., hiking challenging trails, landscape photography, competitive gaming], [Your Hobby 2, e.g., experimenting with cooking, following Formula 1], and contributing to [Your Interest, e.g., relevant open-source projects, local tech meetups].
-                <br><br> *Please personalize this section with your genuine interests.*
-            </p>
+                <br><br> </p>
         </section>
 
-    </div> {/* End Main Content */}
-
-    {/* ======================= JAVASCRIPT START ======================= */}
-    <script>
+    </div> <script>
         document.addEventListener('DOMContentLoaded', () => {
 
             // --- Mobile Menu Toggle ---
@@ -596,7 +567,8 @@
                 // Close sidebar if clicking outside of it on mobile
                 document.addEventListener('click', (e) => {
                      if (window.innerWidth < 1024 && sidebar.classList.contains('open')) {
-                        if (!sidebar.contains(e.target) && e.target !== menuButton && !menuButton.contains(e.target)) {
+                        // Check if the click is outside the sidebar and also not on the menu button itself
+                        if (!sidebar.contains(e.target) && !menuButton.contains(e.target)) {
                              sidebar.classList.remove('open');
                         }
                     }
@@ -616,34 +588,50 @@
             const sections = document.querySelectorAll('section[id]');
             const observerOptions = {
                 root: null, // relative to document viewport
-                rootMargin: '0px',
-                threshold: 0.4 // Trigger when 40% of the section is visible
+                rootMargin: '-50px 0px -50% 0px', // Adjust rootMargin: top offset, trigger earlier when scrolling down
+                threshold: 0 // Trigger as soon as any part enters the viewport adjusted by rootMargin
             };
 
+            let activeNavLink = null; // Keep track of the currently active link
+
             const observer = new IntersectionObserver((entries) => {
+                let bestVisibleSectionId = null;
+                let maxVisibleRatio = 0;
+
                 entries.forEach(entry => {
-                    const id = entry.target.getAttribute('id');
-                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
-                         // Remove active class from all links
-                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                        // Add active class to the current link
-                        if (navLink) {
-                            navLink.classList.add('active');
-                        }
-                        // Trigger animation if section is intersecting
-                        entry.target.style.opacity = '1'; // Make section visible for animation
-                        entry.target.classList.add('animate-fade-in-up');
-
+                    if (entry.isIntersecting && entry.intersectionRatio > maxVisibleRatio) {
+                         maxVisibleRatio = entry.intersectionRatio;
+                         bestVisibleSectionId = entry.target.getAttribute('id');
                     }
-                    // Optional: remove active class when scrolling out completely (can cause flickering)
-                    // else {
-                    //     if (navLink) {
-                    //         navLink.classList.remove('active');
-                    //     }
-                    // }
+                     // Trigger animation if section is intersecting enough
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.1) { // Animate when slightly visible
+                        entry.target.style.opacity = '1';
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
                 });
+
+                 // Update active link only if a section is determined to be the best visible one
+                 if (bestVisibleSectionId) {
+                    const newActiveNavLink = document.querySelector(`.nav-link[href="#${bestVisibleSectionId}"]`);
+                    if (newActiveNavLink !== activeNavLink) {
+                        // Remove active class from the previous link
+                        if (activeNavLink) {
+                            activeNavLink.classList.remove('active');
+                        }
+                        // Add active class to the new link
+                        if (newActiveNavLink) {
+                             newActiveNavLink.classList.add('active');
+                             activeNavLink = newActiveNavLink; // Update the tracked active link
+                        } else {
+                             activeNavLink = null; // Reset if no corresponding link found
+                        }
+                    }
+                 } else {
+                     // Optional: If no section is clearly visible based on criteria, maybe remove active class?
+                     // Or keep the last active one highlighted until a new one becomes dominant.
+                     // Let's keep the last active one for smoother UX.
+                 }
+
             }, observerOptions);
 
             // Observe each section
@@ -651,7 +639,7 @@
                 observer.observe(section);
             });
 
-             // Smooth scroll for internal links (redundant if html scroll-behavior is set, but good fallback)
+             // --- Smooth scroll for internal links ---
              document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
@@ -660,19 +648,33 @@
                          const targetElement = document.querySelector(targetId);
                          if (targetElement) {
                             e.preventDefault(); // Prevent default only if target exists
+                            // Calculate offset if needed (e.g., for fixed headers, but handled by CSS padding/scroll-margin)
                             const offsetTop = targetElement.offsetTop;
+
                             window.scrollTo({
                                 top: offsetTop,
                                 behavior: 'smooth'
                             });
+
+                            // Optional: Manually set active class immediately on click for faster feedback
+                            // document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                            // this.classList.add('active');
+                            // activeNavLink = this; // Update tracked active link
                          }
                     }
                 });
             });
 
+            // --- Update Last Updated Date ---
+            const lastUpdatedElement = document.getElementById('lastUpdatedDate');
+            if (lastUpdatedElement) {
+                 const today = new Date();
+                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                 lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+
+
         }); // End DOMContentLoaded
     </script>
-    {/* ======================== JAVASCRIPT END ======================== */}
-
-</body>
+    </body>
 </html>
