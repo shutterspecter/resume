@@ -3,242 +3,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Name - Portfolio</title>
-  <!-- Optional: Google Fonts or any icon library -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
-    rel="stylesheet"
-  />
+  <title>Creative Agency - Brand Strategy</title>
   <style>
-    /* RESET */
+    /* BASIC RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
+    /* BODY STYLES */
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #1f1f1f;
-      color: #ffffff;
-      overflow-x: hidden;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
     }
 
-    /* WRAPPER */
-    .wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-auto-rows: min-content;
-      gap: 1rem;
-      padding: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* CARD BASE */
-    .card {
-      background-color: #2b2b2b;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      padding: 1rem;
-      position: relative;
+    /* HEADER */
+    header {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      min-height: 150px;
-    }
-    .card h2, .card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    /* PROFILE CARD */
-    .profile {
-      grid-column: span 1;
-      text-align: center;
-    }
-    .profile .avatar {
-      width: 80px;
-      height: 80px;
-      background-color: #444;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e1e1e1;
     }
-    .profile h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .profile p {
+    header .header-left,
+    header .header-right {
       font-size: 0.9rem;
       opacity: 0.8;
     }
 
-    /* CONTACT CARD */
-    .contact {
-      grid-column: span 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .contact button {
-      background-color: #00bfff;
-      border: none;
-      border-radius: 5px;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .contact button:hover {
-      background-color: #009ad1;
-    }
-
-    /* FOCUS CARD */
-    .focus ul {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-    .focus li {
-      margin: 0.25rem 0;
-    }
-
-    /* PORTFOLIO CARD */
-    .portfolio {
-      grid-column: span 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 250px;
-      text-align: center;
-    }
-    .portfolio h3 {
-      margin-bottom: 1rem;
-    }
-    .portfolio .portfolio-box {
-      width: 100%;
-      height: 120px;
-      background-color: #3a3a3a;
-      border: 2px dashed #4a4a4a;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      margin-bottom: 1rem;
-    }
-    .portfolio a {
-      color: #00bfff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* SIDE-PROJECTS CARD */
-    .side-projects ul {
-      list-style: none;
-      margin-top: 1rem;
-    }
-    .side-projects li {
-      background-color: #3a3a3a;
-      margin-bottom: 0.5rem;
+    /* VERTICAL NAVIGATION LABEL */
+    /* Rotated text on the left side (like "00 - HELLO") */
+    .vertical-nav {
+      position: fixed;
+      left: 0;
+      top: 40%;
+      transform: rotate(-90deg) translateX(-50%);
+      transform-origin: left top;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
       padding: 0.5rem;
-      border-radius: 5px;
-      font-size: 0.9rem;
     }
 
-    /* STATS CARD */
-    .stats {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* MAIN CONTENT WRAPPER */
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
     }
-    .stats .big-number {
+
+    /* SECTION TITLE */
+    .content-wrapper h1 {
       font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    /* SUBSECTIONS (e.g. Campaign Development, Channel Strategy) */
+    .subsections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* For narrower screens, stack columns */
+    @media (max-width: 768px) {
+      .subsections {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .subsection {
+      background: #fff;
+      border: 1px solid #e1e1e1;
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+    .subsection h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .subsection p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .subsection button {
+      background-color: #333;
+      color: #fff;
+      padding: 0.65rem 1.25rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .subsection button:hover {
+      background-color: #555;
     }
 
     /* FOOTER */
     footer {
-      text-align: center;
-      padding: 1rem 0;
-      color: #999;
+      border-top: 1px solid #e1e1e1;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 0.8rem;
+      color: #666;
     }
-
-    @media (min-width: 768px) {
-      /* Adjust grid for bigger screens if needed */
-      .wrapper {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      .portfolio {
-        grid-column: span 2;
-      }
+    footer a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <!-- PROFILE CARD -->
-    <div class="card profile">
-      <div class="avatar">
-        <!-- Optional: Could be an SVG or an image -->
-        <span>👨</span>
-      </div>
-      <h2>Your Name</h2>
-      <p>System Support Engineer</p>
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      Based in Brooklyn, New York.
     </div>
+    <div class="header-right">
+      Local time 09:15 AM &nbsp;|&nbsp; Currently, the Haus is Making Coffee
+    </div>
+  </header>
 
-    <!-- CONTACT CARD -->
-    <div class="card contact">
-      <button>Contact Me</button>
-    </div>
-
-    <!-- FOCUS CARD -->
-    <div class="card focus">
-      <h3>Focus</h3>
-      <ul>
-        <li>Graphic &amp; Web Design</li>
-        <li>Motion Design</li>
-        <li>Webflow / Web Dev</li>
-      </ul>
-    </div>
-
-    <!-- PORTFOLIO CARD -->
-    <div class="card portfolio">
-      <h3>Portfolio</h3>
-      <div class="portfolio-box">Browse My Portfolio</div>
-      <a href="#">See Projects</a>
-    </div>
-
-    <!-- SIDE-PROJECTS CARD -->
-    <div class="card side-projects">
-      <h3>Side Projects</h3>
-      <ul>
-        <li>Project Alpha</li>
-        <li>Project Beta</li>
-        <li>Project Gamma</li>
-      </ul>
-    </div>
-
-    <!-- STATS / EXPERIENCE CARD -->
-    <div class="card stats">
-      <div class="big-number">6+</div>
-      <p>Years of Freelancing</p>
-    </div>
+  <!-- VERTICAL LABEL (like "00 - HELLO") -->
+  <div class="vertical-nav">
+    00 - HELLO
   </div>
 
+  <!-- MAIN CONTENT -->
+  <main class="content-wrapper">
+    <h1>02 Brand Strategy</h1>
+    <div class="subsections">
+      <!-- Subsection 1 -->
+      <div class="subsection">
+        <h3>Campaign Development</h3>
+        <p>
+          We are creative, thoughtful partners who work alongside your team (or clients) 
+          to bring your campaign strategy to life. By combining strong positioning and 
+          core messaging that embodies your brand beliefs, we build strategies that 
+          connect and resonate with your target audience.
+        </p>
+      </div>
+
+      <!-- Subsection 2 -->
+      <div class="subsection">
+        <h3>Channel Strategy</h3>
+        <p>
+          Each platform is unique, and every channel has a distinctive tone, community, 
+          and core demo. Whether building strategy for one channel or the entire network, 
+          we help navigate the messaging and execution needed for each platform 
+          without sacrificing your own brand persona.
+        </p>
+      </div>
+
+      <!-- Subsection 3 -->
+      <div class="subsection">
+        <h3>Brainstorm Workshops</h3>
+        <p>
+          Get in touch to learn more about how you and your team can participate in 
+          (or request) a private interactive brainstorming workshop that challenges 
+          groups to think of “pie in the sky” ideas and then translate them 
+          into solid, applicable strategies.
+        </p>
+        <button>Start Strategizing</button>
+      </div>
+
+      <!-- (Add more subsections as needed) -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 Your Name. All Rights Reserved.
+    <span>&copy; 2025 Creative Agency. All rights reserved.</span>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Brand Strategy</a>
+      <a href="#">Production</a>
+      <a href="#">Roll Out</a>
+    </nav>
   </footer>
 
 </body>
